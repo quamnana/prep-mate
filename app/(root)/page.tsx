@@ -1,12 +1,18 @@
 import InterviewCard from "@/components/InterviewCard";
 import { Button } from "@/components/ui/button";
 import { dummyInterviews } from "@/constants";
+import { isAuthenticated } from "@/lib/actions/auth.action";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import React from "react";
 Image;
 
-export default function HomePage() {
+export default async function HomePage() {
+  const isUserAuthenticated = await isAuthenticated();
+
+  if (!isUserAuthenticated) redirect("/");
+
   return (
     <>
       <section className="card-cta">
