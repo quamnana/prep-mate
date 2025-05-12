@@ -11,7 +11,7 @@ Image;
 export default async function HomePage() {
   const isUserAuthenticated = await isAuthenticated();
 
-  if (!isUserAuthenticated) redirect("/");
+  if (!isUserAuthenticated) redirect("/sign-in");
 
   return (
     <>
