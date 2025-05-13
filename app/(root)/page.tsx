@@ -13,9 +13,6 @@ import React from "react";
 Image;
 
 export default async function HomePage() {
-  // const isUserAuthenticated = await isAuthenticated();
-  // if (!isUserAuthenticated) redirect("/sign-in");
-
   const user = await getCurrentUser();
 
   // Parallel call requests
@@ -24,8 +21,8 @@ export default async function HomePage() {
     await getLatestInterviews({ userId: user?.id! }),
   ]);
 
-  const hasPastInterviews = userInterviews?.length || 0 > 0;
-  const hasUpcomingInterviews = latestInterviews?.length || 0 > 0;
+  const hasPastInterviews = userInterviews?.length! > 0;
+  const hasUpcomingInterviews = latestInterviews?.length! > 0;
 
   return (
     <>
